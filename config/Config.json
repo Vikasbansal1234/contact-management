@@ -2,7 +2,7 @@
 
         "port":4040,
         "mongo":{
-            "uri":"mongodb://localhost:27017/contact-management"
+            "uri":"mongodb://abc:abc@ds031972.mongolab.com:31972/contact-management"
 
         }
 
