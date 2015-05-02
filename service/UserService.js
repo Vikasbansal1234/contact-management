@@ -5,7 +5,7 @@
 var User=require('../domain/User');
 exports.getAllUsers=function(){
  var emitter=this;
-    User.find({},function(err,result){
+    User.find({role:{$ne:"admin"}},function(err,result){
         if(err)
             emitter.emit('ERROR',err);
         else
