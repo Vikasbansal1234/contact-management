@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+    <div class="panel-heading text-center">
+        Enter Details
+    </div>
+    <div class="panel-body">
+
+        <form name="contactForm" novalidate="">
+            <div class="form-group">
+                <label>First Name</label>
+                <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" name="firstname" ng-model="modifiedObject.first" class="form-control" required/>
+                </div>
+                <p class="help-block">
+                <div class="label label-danger" ng-show="contactForm.firstname.$dirty && contactForm.firstname.$error.required">Username is mandatory</div>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" name="lastname" ng-model="modifiedObject.last" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="email" name="email" ng-model="modifiedObject.email" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" name="phone" ng-model="modifiedObject.phone" class="form-control"/>
+                </div>
+            </div>
+             <div class="pull-right btn-group">
+                <button type="button" class="btn btn-default" ng-click="save()">Save</button>
+
+                <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+             </div>
+        </form>
+    </div>
+</div>

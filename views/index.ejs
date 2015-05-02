@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="contactApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<script>
+ var contactApp=angular.module('contactApp',[]);
+   contactApp.controller('MainCtrl',function($scope){
+       $scope.data="this is main Ctroler";
+   })
+</script>
+<body>
+<div class="jumbotron">
+    <h3>
+        {{data}}
+    </h3>
+</div>
+<script src="style"
+</body>
+</html>
