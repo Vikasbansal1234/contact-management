@@ -19,14 +19,10 @@
           </a>
       </div>
       <div>
-          <a type="button"  href="/logout" class="btn btn-link navbar-btn navbar-right" ng-click="logout()" ng-show="loggedUser">Logout</a>
+          <a type="button"  href="/logout" class="btn btn-link navbar-btn navbar-right" ng-click="logout()" ng-show="loggedUser">LOGOUT</a>
           <p class="navbar-text navbar-right" ng-show="loggedUser">Welcome {{loggedUser.name}} </p>
-          <button type="button" class="btn btn-link navbar-btn navbar-right" ng-click="login()" ng-hide="loggedUser">Login</button>
-          <button type="button" class="btn btn-link navbar-btn navbar-right" ng-click="signup()" ng-hide="loggedUser">Singup</button>
-
-         <!-- <p class="navbar-text navbar-right"><a href="javascript:void(0);" ng-click="login()">login</a></p>
-          <p class="navbar-text navbar-right"><a href="javascript:void(0);" ng-click="signup()" >signup</a></p>
-          <p class="navbar-text navbar-right"><a href="/logout" ng-click="logout()">logout</a></p>-->
+          <button type="button" class="btn btn-link navbar-btn navbar-right" ng-click="login()" ng-hide="loggedUser">LOGIN</button>
+          <button type="button" class="btn btn-link navbar-btn navbar-right" ng-click="signup()" ng-hide="loggedUser">SIGNUP</button>
       </div>
   </div>
 
@@ -50,7 +46,9 @@
 <script src="javascripts/controller/logincontroller.js"></script>
 <script src="javascripts/controller/signupcontroller.js"></script>
 <script src="javascripts/controller/maincontroller.js"></script>
+<script src="javascripts/controller/alertcontroller.js"></script>
 <script src="javascripts/factory/factory.js"></script>
 <script src="javascripts/config/config.js"></script>
+
 </body>
 </html>

@@ -47,3 +47,15 @@ exports.createUser=function(req,res) {
     })
 
 }
+
+
+exports.getUserById=function(req,res) {
+
+    userService.getUserById(req.params.id).on('SUCCESS',function(result){
+       res.send({status:200,error:null,data:result});
+
+    }).on('ERROR',function(err){
+        res.send({status:500,error:parseMongooseError(err),data:{}});
+    })
+
+}

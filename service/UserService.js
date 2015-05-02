@@ -47,3 +47,16 @@ exports.getUserByNameAndPassword=function(name,password){
         }
     })
 }.toEmitter();
+
+exports.getUserById=function(id){
+
+    var emitter=this;
+    User.findById(id,function(err,result){
+        if(err)
+            emitter.emit("ERROR",err);
+        else{
+            console.log("::::::::::::",result);
+            emitter.emit('SUCCESS',result);
+        }
+    })
+}.toEmitter();

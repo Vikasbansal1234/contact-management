@@ -23,6 +23,7 @@ module.exports=function(app){
 
 
     app.get('/user',userController.getAllUsers);
+    app.get('/user/:id',userController.getUserById)
     app.put('/user/:id',userController.updateUser);
     app.post('/login',userController.getUserByNameAndPassword);
     app.post('/signup',userController.createUser);
