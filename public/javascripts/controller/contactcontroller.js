@@ -1,4 +1,3 @@
-
 angular.module('contactApp').controller('ContactCtrl',function($scope,httpService,$state){
     console.log('controler called');
     $scope.loggedUser=JSON.parse(localStorage.getItem('loggedUser'));
