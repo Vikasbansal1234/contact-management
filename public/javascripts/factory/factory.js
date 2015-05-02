@@ -5,7 +5,7 @@ angular.module('contactApp').factory('httpService',function($http){
             callback(null,data);
         }).error(function(error) {
             console.log('httpService Error: ', error);
-            callback(err,null);
+            callback(error,null);
         });
     }
 })
