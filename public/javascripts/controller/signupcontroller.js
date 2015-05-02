@@ -11,7 +11,7 @@ angular.module('contactApp').controller('SignUpCtrl',function($scope,$modalInsta
                 else {
                     if (result.status === 200) {
 
-                        localStorage.setItem('loggedUser', JSON.stringify(result.data));
+                        sessionStorage.setItem('loggedUser', JSON.stringify(result.data));
 
                         $modalInstance.close();
                         $state.go('contact.all');

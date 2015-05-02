@@ -1,6 +1,6 @@
 angular.module('contactApp').controller('ContactCtrl',function($scope,httpService,$state,$modal){
 
-    $scope.loggedUser=JSON.parse(localStorage.getItem('loggedUser'));
+    $scope.loggedUser=JSON.parse(sessionStorage.getItem('loggedUser'));
     $scope.formValidation={}
     httpService(function(err,result){
         console.log('>>>>>>>>>',err,result);

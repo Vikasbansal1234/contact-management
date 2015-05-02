@@ -12,7 +12,7 @@ angular.module('contactApp').controller('LoginCtrl',function($scope,$modalInstan
                     console.log('error occurs');
                 else {
                     if (result.status === 200) {
-                        localStorage.setItem('loggedUser', JSON.stringify(result.data));
+                        sessionStorage.setItem('loggedUser', JSON.stringify(result.data));
 
                         $modalInstance.close();
                         if(result.data.role==='guest')

@@ -2,7 +2,7 @@
  * Created by intelligrape on 2/5/15.
  */
 angular.module('contactApp').controller('MainCtrl',function($scope,$modal,$state,$location){
-    $scope.loggedUser=JSON.parse(localStorage.getItem('loggedUser'));
+    $scope.loggedUser=JSON.parse(.getItem('loggedUser'));
     $scope.login=function(){
         var modal=$modal.open({
             templateUrl:'templates/login.html',
@@ -11,7 +11,7 @@ angular.module('contactApp').controller('MainCtrl',function($scope,$modal,$state
         })
         modal.result.then(function(){
 
-            $scope.loggedUser=JSON.parse(localStorage.getItem('loggedUser'));
+            $scope.loggedUser=JSON.parse(.getItem('loggedUser'));
            console.log(">>>>>>>>>",$scope.loggedUser);
         },function(err){})
     }
@@ -24,12 +24,12 @@ angular.module('contactApp').controller('MainCtrl',function($scope,$modal,$state
         })
         modal.result.then(function(){
             console.log(">>>>>>>>>",$scope.loggedUser);
-            $scope.loggedUser=JSON.parse(localStorage.getItem('loggedUser'));
+            $scope.loggedUser=JSON.parse(.getItem('loggedUser'));
         },function(err){})
     }
     $scope.logout=function(){
         $scope.login="false";
 
-        localStorage.removeItem('loggedUser');
+        .removeItem('loggedUser');
     }
 })
