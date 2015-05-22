@@ -1,6 +1,3 @@
-/**
- * Created by intelligrape on 29/4/15.
- */
 
 var userController=require('../controller/UserController');
 var contactController=require('../controller/ContactController');

@@ -1,6 +1,4 @@
-/**
- * Created by intelligrape on 29/4/15.
- */
+
 var mongoose=require('mongoose');
 var config=require('./Config.json');
 function initMongoose(callback){

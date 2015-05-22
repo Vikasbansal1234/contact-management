@@ -1,5 +1,5 @@
 /**
- * Created by intelligrape on 2/5/15.
+ * Created by aethons on 2/5/15.
  */
 angular.module('contactApp').controller('MainCtrl',function($scope,$modal,$state,$location){
     $scope.loggedUser=JSON.parse(sessionStorage.getItem('loggedUser'));

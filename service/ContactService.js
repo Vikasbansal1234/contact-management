@@ -1,5 +1,5 @@
 /**
- * Created by intelligrape on 29/4/15.
+ * Created by aethons on 29/4/15.
  */
 var Contact=require('../domain/Contact');
 var User=require('../domain/User');

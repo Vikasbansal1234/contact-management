@@ -1,8 +1,8 @@
 /**
- * Created by intelligrape on 29/4/15.
+ * Created by aethons on 29/4/15.
  */
 /**
- * Created by intelligrape on 29/4/15.
+ * Created by aethons on 29/4/15.
  */
 var mongoose=require('mongoose');
 var User=require('./User');
