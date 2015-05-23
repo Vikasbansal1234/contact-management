@@ -16,8 +16,7 @@ angular.module('contactApp').controller('ContactCtrl',function($scope,httpServic
 
 
     $scope.create=function(){
-
-        httpService(function(err,result){
+     httpService(function(err,result){
             if(err)
                 console.log(err);
             else{

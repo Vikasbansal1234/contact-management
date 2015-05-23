@@ -1,12 +1,31 @@
 
 var userController=require('../controller/UserController');
 var contactController=require('../controller/ContactController');
+var fs=require('fs');
 
 module.exports=function(app){
 
     app.get('/',function(req,res){
-        console.log('request received');
-        res.redirect('/index.html');
+        var fs=require('fs');
+        function getFiles (dir, files_){
+            files_ = files_ || {};
+            var files = fs.readdirSync(dir);
+            for (var i in files){
+                var filename=files[i];
+                var name = dir + '/' + files[i];
+                var fsStat=fs.statSync(name);
+
+                if (fsStat.isDirectory()){
+                    getFiles(name, files_);
+                } else {
+                    files_[filename]=fsStat.mtime.getTime();
+                }
+            }
+            return files_;
+        }
+        var files=getFiles(__dirname+"/../public");
+        console.log(files);
+        res.render('index',{cache:files});
     })
     app.get('/logout',function(req,res){
         res.redirect('/index.html');
