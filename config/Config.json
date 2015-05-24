@@ -2,7 +2,7 @@
 
         "port":4040,
         "mongo":{
-            "uri":" mongodb://majinbu:erpuser123@ds031972.mongolab.com:31972/contact-management"
+            "uri":"mongodb://majinbu:erpuser123@ds031972.mongolab.com:31972/contact-management"
 
         },
          "mongostore":{
