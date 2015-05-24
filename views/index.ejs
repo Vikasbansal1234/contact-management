@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="stylesheets/bootstrap.min.css??ver=<%=cache['bootstrap.min.css']%>"/>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css?ver=<%=cache['bootstrap.min.css']%>"/>
     <style>
         body{
             font-family: serif;
@@ -19,10 +19,8 @@
             </a>
         </div>
         <div>
-            <a type="button"  href="/logout" class="btn btn-link navbar-btn navbar-right" ng-click="logout()" ng-show="loggedUser">LOGOUT</a>
+            <a type="button"  href="/logout" class="btn btn-link navbar-btn navbar-right" ng-click="logout()">LOGOUT</a>
             <p class="navbar-text navbar-right" ng-show="loggedUser">Welcome {{loggedUser.name}} </p>
-            <button type="button" class="btn btn-link navbar-btn navbar-right" ng-click="login()" ng-hide="loggedUser">LOGIN</button>
-            <button type="button" class="btn btn-link navbar-btn navbar-right" ng-click="signup()" ng-hide="loggedUser">SIGNUP</button>
         </div>
     </div>
 

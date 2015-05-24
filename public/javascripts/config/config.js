@@ -1,4 +1,4 @@
-angular.module('contactApp').config(function($stateProvider,$urlRouterProvider){
+angular.module('contactApp').config(function($stateProvider,$urlRouterProvider,$httpProvider){
 
         $stateProvider.state('home',{
             url:'/home',
@@ -38,5 +38,17 @@ angular.module('contactApp').config(function($stateProvider,$urlRouterProvider){
                 rightbar:{templateUrl:'templates/contactedit.html'}
             }
         })
+
+    $httpProvider.interceptors.push(function(){
+        return {
+            request:function(config){
+              console.log('request ',config.url);
+                return config;
+            },
+            response:function(response){
+                return response;
+            }
+        }
+    })
 
     })

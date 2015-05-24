@@ -1,6 +1,5 @@
 angular.module('contactApp').controller('LoginCtrl',function($scope,$modalInstance,$state,httpService){
-
-    $scope.login=function(){
+        $scope.login=function(){
 
         if($scope.loginForm.$invalid){
             $scope.submitForm=true;
@@ -13,12 +12,11 @@ angular.module('contactApp').controller('LoginCtrl',function($scope,$modalInstan
                 else {
                     if (result.status === 200) {
                         sessionStorage.setItem('loggedUser', JSON.stringify(result.data));
-
                         $modalInstance.close();
                         if(result.data.role==='guest')
-                            $state.go('contact.all')
+                            $state.go('contact.all');
                         else
-                            $state.go('admin.alluser')
+                            $state.go('admin.alluser');
                     }
                     else if (result.status === 500) {
                         $scope.errorMessage = result.error;
