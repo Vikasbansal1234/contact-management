@@ -1,14 +1,13 @@
 {
 
-        "port":4040,
-        "mongo":{
-            "uri":"mongodb://majinbu:erpuser123@ds031972.mongolab.com:31972/contact-management"
+        "port":5050,
+         "mongodb": {
+             "db": "contact-management",
+             "host": "ds031912.mongolab.com",
+             "port": 31912,
+             "username": "admin",
+             "password": "admin"
 
-        },
-         "mongostore":{
-             "db":"contact-management",
-             "host":"ds031972.mongolab.com",
-              "port":31972
          }
 
 }

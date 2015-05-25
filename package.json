@@ -9,7 +9,8 @@
     "connect-mongo": "^0.8.1",
     "ejs": "*",
     "express": "3.18.2",
-    "mongoose": "~4.0.2"
+    "mongoose": "~4.0.2",
+    "rand-token": "^0.2.1"
   },
   "engines": {
     "node": "0.10.26",
