@@ -8,7 +8,8 @@ var contactService=require('../service/ContactService');
 var parseMongooseError=require('../Utils/ParseMongooseError');
 
 exports.getContactById=function(req,res){
-    var contactId=req.params.id;
+    var contactId = req.params.id;
+    console.log(contactId,' <<<<<<<<<<<<<<<<<<<<<<<<<<<<');
     contactService.getContactById(contactId).on('SUCCESS',function(result){
         res.send({status:200,error:null,data:result});
     }).on('ERROR',function(err){

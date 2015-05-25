@@ -1,7 +1,7 @@
 /**
  * Created by aethons on 2/5/15.
  */
-angular.module('contactApp').controller('MainCtrl',function($scope,$modal,$state,$location){
+angular.module('contactApp').controller('MainCtrl',['$scope','$modal','$state','$location', function($scope,$modal,$state,$location){
     $scope.loggedUser=JSON.parse(sessionStorage.getItem('loggedUser'));
     $scope.login=function(){
         var modal=$modal.open({
@@ -32,4 +32,4 @@ angular.module('contactApp').controller('MainCtrl',function($scope,$modal,$state
 
          sessionStorage.removeItem('loggedUser');
     }
-})
+}])

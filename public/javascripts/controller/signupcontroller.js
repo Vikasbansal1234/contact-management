@@ -1,4 +1,4 @@
-angular.module('contactApp').controller('SignUpCtrl',function($scope,$modalInstance,$state,httpService){
+angular.module('contactApp').controller('SignUpCtrl',['$scope','$modalInstance','$state','httpService', function($scope,$modalInstance,$state,httpService){
 
     $scope.signup=function(){
         if($scope.signUpForm.$invalid){
@@ -27,4 +27,4 @@ angular.module('contactApp').controller('SignUpCtrl',function($scope,$modalInsta
     $scope.cancel=function(){
         $modalInstance.dismiss();
     }
-})
+}]);

@@ -1,4 +1,4 @@
-angular.module('contactApp').controller('LoginCtrl',function($scope,$modalInstance,$state,httpService){
+angular.module('contactApp').controller('LoginCtrl',['$scope','$modalInstance','$state','httpService',function($scope,$modalInstance,$state,httpService){
 
     $scope.login=function(){
 
@@ -30,4 +30,4 @@ angular.module('contactApp').controller('LoginCtrl',function($scope,$modalInstan
     $scope.cancel=function(){
         $modalInstance.dismiss();
     }
-})
+}])

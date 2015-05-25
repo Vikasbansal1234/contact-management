@@ -1,4 +1,4 @@
-angular.module('contactApp').config(function($stateProvider,$urlRouterProvider){
+angular.module('contactApp').config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlRouterProvider){
 
         $stateProvider.state('home',{
             url:'/home',
@@ -39,4 +39,4 @@ angular.module('contactApp').config(function($stateProvider,$urlRouterProvider){
             }
         })
 
-    })
+    }]);

@@ -4,7 +4,7 @@ var contactController=require('../controller/ContactController');
 var fs=require('fs');
 
 module.exports=function(app){
-
+    console.log('><><><><><><><><><>');
     app.get('/',function(req,res){
         var fs=require('fs');
         function getFiles (dir, files_){

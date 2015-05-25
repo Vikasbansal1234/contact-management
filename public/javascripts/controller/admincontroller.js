@@ -1,4 +1,4 @@
-angular.module('contactApp').controller('AdminCtrl',function($scope,$state,httpService){
+angular.module('contactApp').controller('AdminCtrl',['$scope','$state','httpService', function($scope,$state,httpService){
 
     $scope.loggedUser=JSON.parse(sessionStorage.getItem('loggedUser'));
     httpService(function(err,result){
@@ -22,4 +22,4 @@ angular.module('contactApp').controller('AdminCtrl',function($scope,$state,httpS
         },{method:"PUT",url:"/user/"+user._id,headers:{"content-type":"application/json"},data:user});
     }
 
-})
+}]);
