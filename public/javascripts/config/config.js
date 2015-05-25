@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 angular.module('contactApp').config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlRouterProvider){
+=======
+angular.module('contactApp').config(function($stateProvider,$urlRouterProvider,$httpProvider){
+>>>>>>> a26378c07a111694451291e8826c23d6856945f0
 
         $stateProvider.state('home',{
             url:'/home',
@@ -39,4 +43,20 @@ angular.module('contactApp').config(['$stateProvider','$urlRouterProvider', func
             }
         })
 
+<<<<<<< HEAD
     }]);
+=======
+    $httpProvider.interceptors.push(function(){
+        return {
+            request:function(config){
+              console.log('request ',config.url);
+                return config;
+            },
+            response:function(response){
+                return response;
+            }
+        }
+    })
+
+    })
+>>>>>>> a26378c07a111694451291e8826c23d6856945f0
