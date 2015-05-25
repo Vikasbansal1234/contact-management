@@ -49,7 +49,6 @@ angular.module('contactApp').config(function($stateProvider,$urlRouterProvider,$
     $httpProvider.interceptors.push(function(){
         return {
             request:function(config){
-              console.log('request ',config.url);
                 return config;
             },
             response:function(response){

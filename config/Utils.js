@@ -1,5 +1,4 @@
 Function.prototype.toEmitter = function () {
-  //  "uri":"ds031832.mongolab.com:31832/contact-management"
     var origFunc = this;
     return function () {
         var args = arguments;

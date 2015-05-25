@@ -55,7 +55,6 @@ exports.getUserById=function(id){
         if(err)
             emitter.emit("ERROR",err);
         else{
-            console.log("::::::::::::",result);
             emitter.emit('SUCCESS',result);
         }
     })

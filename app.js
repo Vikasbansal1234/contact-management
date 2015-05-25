@@ -5,6 +5,7 @@ var Utils=require('./config/Utils');
 var app = express();
 var config=require('./config/Config.json');
 var MongoStore=require('connect-mongo')(express);
+var AuthenticationMiddleware=require('./Utils/AuthenticationMiddleware');
 
 // all environments;
 
@@ -20,21 +21,13 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('Sek7et'));
 app.use(express.session({store:new MongoStore({
-    db:config.mongostore.db,
-    host:config.mongostore.host,
-    port:config.mongostore.port
+    db:config.mongodb.db,
+    host:config.mongodb.host,
+    port:config.mongodb.port,
+    username:config.mongodb.username,
+    password:config.mongodb.password
 })}));
-
-app.use(function(req,res,next){
-    var url=req.url;
-    console.log('custom url >> ',url);
-    if(url==='/' || url==='/login' || url==='/signup' || (url!=='/'  && url!=='/login' && url!=='/singup' && req.session.user)){
-        next();
-    }
-    else{
-        res.redirect('/');
-    }
-})
+app.use(AuthenticationMiddleware());
 
 app.use(app.router);
 

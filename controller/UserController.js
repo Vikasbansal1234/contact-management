@@ -1,6 +1,5 @@
-/**
- * Created by aethons on 29/4/15.
- */
+
+var randToken=require('rand-token');
 var userService=require('../service/UserService');
 var parseMongooseError=require('../Utils/ParseMongooseError');
 
@@ -29,10 +28,11 @@ exports.getUserByNameAndPassword=function(req,res) {
     userService.getUserByNameAndPassword(req.body.username,req.body.password).on('SUCCESS',function(result){
         if(result){
             req.session.user=result;
-            res.redirect('/welcome');
+            req.session.csrfToken=randToken.generate(16);
+            res.send({status:200,error:null,data:result,csrftoken:req.session.csrfToken});
         }
         else{
-            res.render('login',{error:"invalid credentials"});
+          res.send({status:500,error:'invalid credentials',data:null});
         }
     }).on('ERROR',function(err){
         res.send({status:500,error:parseMongooseError(err),data:{}});
@@ -47,8 +47,9 @@ exports.createUser=function(req,res) {
         password:req.body.password
     }
     userService.createUser(user).on('SUCCESS',function(result){
+        req.session.csrfToken=randToken.generate(16);
         req.session.user=result;
-        res.redirect('/welcome')
+        res.send({status:200,error:null,data:result,csrftoken:req.session.csrfToken});
     }).on('ERROR',function(error){
          res.render('login',{error:parseMongooseError(error)});
     })

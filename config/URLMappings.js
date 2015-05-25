@@ -5,17 +5,23 @@ var readDirFiles=require('../Utils/ReadDirFiles.js');
 
 module.exports=function(app){
     app.get('/',function(req,res){
-        var files=readDirFiles(__dirname+"/../public");
-        res.render('login',{cache:files,error:"No error message"});
+       res.redirect('/index');
+    })
+
+    app.get('/index',function(req,res){
+         res.render('index',{cache:readDirFiles(__dirname+"/../public")});
     })
 
     app.get('/logout',function(req,res){
-        req.session.destroy();
-        res.redirect('/');
+        try{
+         req.session.destroy();
+         res.send({status:200,error:'',data:"logout"});
+        }catch(e){
+         res.send({status:500,error: e.message,data:null});
+        }
+
     })
-    app.get('/welcome',function(req,res){
-        res.render('index');
-    })
+
 
     app.get('/contact/:id',contactController.getContactById);
     app.get('/contact',contactController.getAllContact);
@@ -31,5 +37,4 @@ module.exports=function(app){
     app.post('/login',userController.getUserByNameAndPassword);
     app.post('/signup',userController.createUser);
 
-    app.get('/currentuser',userController.getCurrentUser);
 }
