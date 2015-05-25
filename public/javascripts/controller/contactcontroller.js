@@ -3,7 +3,6 @@ angular.module('contactApp').controller('ContactCtrl',['$scope','httpService','$
     $scope.loggedUser=JSON.parse(sessionStorage.getItem('loggedUser'));
     $scope.formValidation={}
     httpService(function(err,result){
-        console.log('>>>>>>>>>',err,result);
         if(err)
             console.log(err);
         else

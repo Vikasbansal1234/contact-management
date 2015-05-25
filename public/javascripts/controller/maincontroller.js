@@ -7,7 +7,6 @@ angular.module('contactApp').controller('MainCtrl',['$scope','$modal','$state','
         })
         modal.result.then(function(){
             $scope.loggedUser=JSON.parse(sessionStorage.getItem('loggedUser'));
-           console.log(">>>>>>>>>",$scope.loggedUser);
         },function(err){})
     }
 
@@ -18,20 +17,21 @@ angular.module('contactApp').controller('MainCtrl',['$scope','$modal','$state','
             size:'sm'
         })
         modal.result.then(function(){
-            console.log(">>>>>>>>>",$scope.loggedUser);
             $scope.loggedUser=JSON.parse(sessionStorage.getItem('loggedUser'));
         },function(err){})
     }
 
-    $scope.logout=function(event){
-            event.preventDefault();
+    $scope.logout=function(){
+            //event.preventDefault();
+        console.log('vikas gadha hai');
         httpService(function(err,result){
             if(err)
              console.log(err);
             else{
+                console.log('Logout successfully');
                 sessionStorage.removeItem('loggedUser');
                $window.open('index','_self');
             }
         },{method:"GET",url:"/logout"})
     }
-}])
+}]);

@@ -28,7 +28,6 @@ angular.module('contactApp').controller('ContactCtrl',['$scope','httpService','$
     $scope.loggedUser=JSON.parse(sessionStorage.getItem('loggedUser'));
     $scope.formValidation={}
     httpService(function(err,result){
-        console.log('>>>>>>>>>',err,result);
         if(err)
             console.log(err);
         else
@@ -216,12 +215,11 @@ angular.module('contactApp').controller('LoginCtrl',['$scope','$modalInstance','
                 else {
                     if (result.status === 200) {
                         sessionStorage.setItem('loggedUser', JSON.stringify(result.data));
-
                         $modalInstance.close();
                         if(result.data.role==='guest')
-                            $state.go('contact.all')
+                            $state.go('contact.all');
                         else
-                            $state.go('admin.alluser')
+                            $state.go('admin.alluser');
                     }
                     else if (result.status === 500) {
                         $scope.errorMessage = result.error;
@@ -234,6 +232,7 @@ angular.module('contactApp').controller('LoginCtrl',['$scope','$modalInstance','
         $modalInstance.dismiss();
     }
 }])
+
 angular.module('contactApp').controller('SignUpCtrl',['$scope','$modalInstance','$state','httpService', function($scope,$modalInstance,$state,httpService){
 
     $scope.signup=function(){
@@ -264,21 +263,15 @@ angular.module('contactApp').controller('SignUpCtrl',['$scope','$modalInstance',
         $modalInstance.dismiss();
     }
 }]);
-/**
- * Created by aethons on 2/5/15.
- */
-angular.module('contactApp').controller('MainCtrl',['$scope','$modal','$state','$location', function($scope,$modal,$state,$location){
-    $scope.loggedUser=JSON.parse(sessionStorage.getItem('loggedUser'));
-    $scope.login=function(){
+angular.module('contactApp').controller('MainCtrl',['$scope','$modal','$state','$window','httpService', function($scope,$modal,$state,httpService,$window){
+       $scope.login=function(){
         var modal=$modal.open({
             templateUrl:'templates/login.html',
             controller:'LoginCtrl',
             size:'sm'
         })
         modal.result.then(function(){
-
             $scope.loggedUser=JSON.parse(sessionStorage.getItem('loggedUser'));
-           console.log(">>>>>>>>>",$scope.loggedUser);
         },function(err){})
     }
 
@@ -289,16 +282,25 @@ angular.module('contactApp').controller('MainCtrl',['$scope','$modal','$state','
             size:'sm'
         })
         modal.result.then(function(){
-            console.log(">>>>>>>>>",$scope.loggedUser);
             $scope.loggedUser=JSON.parse(sessionStorage.getItem('loggedUser'));
         },function(err){})
     }
-    $scope.logout=function(){
-        $scope.login="false";
 
-         sessionStorage.removeItem('loggedUser');
+    $scope.logout=function(){
+            //event.preventDefault();
+        console.log('vikas gadha hai');
+        httpService(function(err,result){
+            if(err)
+             console.log(err);
+            else{
+                console.log('Logout successfully');
+                sessionStorage.removeItem('loggedUser');
+               $window.open('index','_self');
+            }
+        },{method:"GET",url:"/logout"})
     }
-}])
+}]);
+
 angular.module('contactApp').controller('AlertCtrl',['$scope','$modalInstance','$alerts', function($scope,$modalInstance,alerts){
      console.log('alert controller called');
      $scope.alerts=alerts;

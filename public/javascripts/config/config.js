@@ -1,8 +1,5 @@
-<<<<<<< HEAD
+
 angular.module('contactApp').config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlRouterProvider){
-=======
-angular.module('contactApp').config(function($stateProvider,$urlRouterProvider,$httpProvider){
->>>>>>> a26378c07a111694451291e8826c23d6856945f0
 
         $stateProvider.state('home',{
             url:'/home',
@@ -42,10 +39,6 @@ angular.module('contactApp').config(function($stateProvider,$urlRouterProvider,$
                 rightbar:{templateUrl:'templates/contactedit.html'}
             }
         })
-
-<<<<<<< HEAD
-    }]);
-=======
     $httpProvider.interceptors.push(function(){
         return {
             request:function(config){
@@ -57,5 +50,4 @@ angular.module('contactApp').config(function($stateProvider,$urlRouterProvider,$
         }
     })
 
-    })
->>>>>>> a26378c07a111694451291e8826c23d6856945f0
+    }])

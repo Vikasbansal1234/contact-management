@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 angular.module('contactApp').controller('LoginCtrl',['$scope','$modalInstance','$state','httpService',function($scope,$modalInstance,$state,httpService){
 
     $scope.login=function(){
-=======
-angular.module('contactApp').controller('LoginCtrl',function($scope,$modalInstance,$state,httpService){
-        $scope.login=function(){
->>>>>>> a26378c07a111694451291e8826c23d6856945f0
 
         if($scope.loginForm.$invalid){
             $scope.submitForm=true;

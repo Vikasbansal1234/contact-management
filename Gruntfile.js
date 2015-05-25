@@ -36,12 +36,12 @@ module.exports = function(grunt) {
             js: {
                 files: {
                     'public/javascripts/lib.all.min.js' : [ 'public/javascripts/controllers.js' ],
-                    'public/javascripts/factory.config.min.js' : [ 'public/javascripts/factory/factory.js', 'public/javascripts/config/config.js' ]
+                    'public/javascripts/factory.config.min.js' : [ 'public/javascripts/factory/factory.js' ]
                 }
             }
         },
         clean: {
-            js: ["javascripts/controllers.js", "javascripts/controller/lib.all.min.js","javascripts/factory.config.min.js","javascripts/config/config.js","javascripts/factory/factory.js"]
+            js: ["javascripts/controllers.js", "javascripts/controller/lib.all.min.js", "javascripts/factory.config.min.js", "javascripts/factory/factory.js"]
         }
     });
     grunt.loadNpmTasks('grunt-contrib-concat');
