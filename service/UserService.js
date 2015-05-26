@@ -38,7 +38,7 @@ exports.createUser=function(user){
 exports.getUserByNameAndPassword=function(name,password){
 
     var emitter=this;
-    User.findOne({name:name,password:password},function(err,result){
+    User.findOne({name:name,password:password},{password:0},function(err,result){
         if(err)
             emitter.emit("ERROR",err);
         else{
