@@ -11,7 +11,7 @@ angular.module('contactApp').controller('ContactCtrl',['$scope','httpService','$
                 $scope.contacts=result.data;
         }
 
-    },{method:"GET",url:"/contact",params:{user_id: $scope.loggedUser._id}})
+    },{method:"GET",url:"/contact"})
 
 
     $scope.create=function(){
@@ -92,7 +92,7 @@ angular.module('contactApp').controller('ContactCtrl',['$scope','httpService','$
                                    $scope.contacts.splice($scope.contacts.indexOf(item),1);
                            }
 
-                       },{method:"DELETE",url:"/contact/"+item._id,params:{user_id:$scope.loggedUser._id}})
+                       },{method:"DELETE",url:"/contact/"+item._id})
                    }
                     else{
                        $modal.open({
@@ -140,7 +140,7 @@ angular.module('contactApp').controller('ContactCtrl',['$scope','httpService','$
                         }, {method: "GET", url: "/contact", params: {user_id: $scope.loggedUser._id}})
                     }
 
-                }, {method: "PUT", headers: {"content-type": "application/json"}, params: {user_id: $scope.modifiedObject.user_id}, url: '/contact/' + $scope.modifiedObject._id, data: $scope.modifiedObject});
+                }, {method: "PUT", headers: {"content-type": "application/json"}, url: '/contact/' + $scope.modifiedObject._id, data: $scope.modifiedObject});
             }
             else {
 
@@ -162,7 +162,7 @@ angular.module('contactApp').controller('ContactCtrl',['$scope','httpService','$
                                 }
                             }
 
-                        }, {method: "GET", url: "/contact", params: {user_id: $scope.loggedUser._id}})
+                        }, {method: "GET", url: "/contact"})
                     }
 
                 }, {method: "POST", headers: {"content-type": "application/json"}, url: '/contact', data: $scope.modifiedObject});

@@ -4,15 +4,21 @@ var userService=require('../service/UserService');
 var parseMongooseError=require('../Utils/ParseMongooseError');
 
 exports.getAllUsers=function(req,res) {
+    if(req.session.user.role==='admin'){
      userService.getAllUsers().on('SUCCESS',function(result){
          res.send({status:200,error:null,data:result});
      }).on('ERROR',function(err){
          res.send({status:500,error:parseMongooseError(err),data:{}});
      })
+    }else
+    {
+        res.send({status:500,error:"No Data Found",data:{}});
+    }
 
 }
 
 exports.updateUser=function(req,res) {
+    if(req.session.user.role==='admin'){
     var user=req.body;
     user.modified_on=new Date();
     var userId=req.params.id;
@@ -21,7 +27,9 @@ exports.updateUser=function(req,res) {
     }).on('ERROR',function(err){
         res.send({status:500,error:parseMongooseError(err),data:{}});
     })
-
+    }
+    else
+        res.send({status:500,error:"No Data Found",data:{}});
 }
 
 exports.getUserByNameAndPassword=function(req,res) {
@@ -58,16 +66,16 @@ exports.createUser=function(req,res) {
 
 
 exports.getUserById=function(req,res) {
+      if(req.session.user.role='admin' || req.session.user._id===req.params.id) {
+          userService.getUserById(req.params.id).on('SUCCESS', function (result) {
+              res.send({status: 200, error: null, data: result});
 
-    userService.getUserById(req.params.id).on('SUCCESS',function(result){
-       res.send({status:200,error:null,data:result});
+          }).on('ERROR', function (err) {
+              res.send({status: 500, error: parseMongooseError(err), data: {}});
+          })
+      }
+    else{
+          res.send({status:500,error:"No Data Found",data:{}});
+      }
 
-    }).on('ERROR',function(err){
-        res.send({status:500,error:parseMongooseError(err),data:{}});
-    })
-
-}
-
-exports.getCurrentUser=function(req,res){
-    res.send({status:200,error:null,data:req.session.user});
 }

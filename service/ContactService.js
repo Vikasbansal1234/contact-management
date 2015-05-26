@@ -4,15 +4,14 @@
 var Contact=require('../domain/Contact');
 var User=require('../domain/User');
 
-exports.getContactById=function(contactId){
+exports.getContactById=function(contactId,userId){
     var emitter=this;
-    Contact.findById(contactId,function(err,result){
+    Contact.findOne({_id:contactId,user_id:userId},function(err,result){
         if(err)
          emitter.emit('ERROR',err);
         else
          emitter.emit('SUCCESS',result);
     })
-
 }.toEmitter();
 
 
@@ -34,7 +33,7 @@ exports.deleteContactById=function(contactId,userId){
         emitter.emit('ERROR',err);
         else{
             if(result && result.delete){
-                Contact.findByIdAndRemove(contactId,function(err,result){
+                Contact.findOneAndRemove({_id:contactId,user_id:userId},function(err,result){
                     if(err)
                      emitter.emit('ERROR',err);
                     else
@@ -51,7 +50,6 @@ exports.deleteContactById=function(contactId,userId){
 
 exports.createContact=function(contact,userId){
     var emitter=this;
-    contact.user_id=userId;
     User.findById(userId,function(err,result){
         if(err)
             emitter.emit('ERROR',err);
@@ -81,7 +79,7 @@ exports.updateContact=function(contact,userId){
             emitter.emit('ERROR',err);
         else{
             if(result && result.update){
-                Contact.update({_id:contact._id},contact,function(err,result){
+                Contact.update({_id:contact._id,user_id:userId},contact,function(err,result){
                     if(err)
                         emitter.emit('ERROR',err);
                     else

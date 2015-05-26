@@ -9,8 +9,8 @@ var parseMongooseError=require('../Utils/ParseMongooseError');
 
 exports.getContactById=function(req,res){
     var contactId = req.params.id;
-    console.log(contactId,' <<<<<<<<<<<<<<<<<<<<<<<<<<<<');
-    contactService.getContactById(contactId).on('SUCCESS',function(result){
+    var userId=req.session.user._id;
+    contactService.getContactById(contactId,userId).on('SUCCESS',function(result){
         res.send({status:200,error:null,data:result});
     }).on('ERROR',function(err){
         res.send({status:500,error:parseMongooseError(err),data:{}});
@@ -18,7 +18,7 @@ exports.getContactById=function(req,res){
 }
 
 exports.getAllContact=function(req,res){
-    var userId=req.query.user_id;
+    var userId=req.session.user._id;
     contactService.getAllContact(userId).on('SUCCESS',function(result){
         res.send({status:200,error:null,data:result});
     }).on('ERROR',function(err){
@@ -28,7 +28,8 @@ exports.getAllContact=function(req,res){
 
 exports.updateContact=function(req,res){
     var contact=req.body;
-    var userId=req.query.user_id;
+    contact.user_id=req.session.user._id;
+    var userId=req.session.user._id;
     contact.modified_on=new Date();
     contactService.updateContact(contact,userId).on('SUCCESS',function(result){
         res.send({status:200,error:null,data:result});
@@ -38,7 +39,7 @@ exports.updateContact=function(req,res){
 }
 
 exports.deleteContactById=function(req,res){
-    var userId=req.query.user_id;
+    var userId=req.session.user._id;
     var contactId=req.params.id;
     contactService.deleteContactById(contactId,userId).on('SUCCESS',function(result){
         res.send({status:200,error:null,data:result});
@@ -49,10 +50,8 @@ exports.deleteContactById=function(req,res){
 
 exports.createContact=function(req,res){
     var contact=req.body;
-    if(!req.body.user_id)
-        res.send({status:500,error:'user_id is required ',data:{}});
-    else
-    contactService.createContact(contact,req.body.user_id).on('SUCCESS',function(result){
+    contact.user_id=req.session.user._id;
+    contactService.createContact(contact,req.session.user._id).on('SUCCESS',function(result){
         res.send({status:200,error:null,data:result});
     }).on('ERROR',function(err){
         res.send({status:500,error:parseMongooseError(err),data:{}});
