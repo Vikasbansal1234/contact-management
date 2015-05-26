@@ -19,7 +19,7 @@
             </a>
         </div>
         <div>
-            <a type="button"  href="/logout" class="btn btn-link navbar-btn navbar-right" ng-click="logout($event)" ng-show="loggedUser">LOGOUT</a>
+            <button type="button"   class="btn btn-link navbar-btn navbar-right" ng-click="logout()" ng-show="loggedUser">LOGOUT</button>
             <p class="navbar-text navbar-right" ng-show="loggedUser">Welcome {{loggedUser.name}} </p>
             <button type="button" class="btn btn-link navbar-btn navbar-right" ng-click="login()" ng-hide="loggedUser">LOGIN</button>
             <button type="button" class="btn btn-link navbar-btn navbar-right" ng-click="signup()" ng-hide="loggedUser">SIGNUP</button>
@@ -33,7 +33,7 @@
 <script src="javascripts/common/jquery-1.7.2.min.js?ver=<%=cache['jquery-1.7.2.min.js']%>"></script>
 <script src="components/angular/angular.min.js?ver=<%=cache['angular.min.js']%>"></script>
 <script src="components/angular-ui-router/release/angular-ui-router.min.js?ver=<%=cache['angular-ui-router.min.js']%>"></script>
-<script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js?ver=<%=cache['config.js']%>"></script>
+<script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js?ver=<%=cache['ui-bootstrap-tpls.min.js']%>"></script>
 <script src="javascripts/common/bootstrap.min.js?ver=<%=cache['bootstrap.min.js']%>"></script>
 <script>
     var contactApp=angular.module('contactApp',['ui.router','ui.bootstrap']);

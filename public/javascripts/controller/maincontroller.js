@@ -1,4 +1,4 @@
-angular.module('contactApp').controller('MainCtrl',['$scope','$modal','$state','$window','httpService', function($scope,$modal,$state,httpService,$window){
+angular.module('contactApp').controller('MainCtrl',['$scope','$modal','$state','httpService','$window', function($scope,$modal,$state,httpService,$window){
        $scope.login=function(){
         var modal=$modal.open({
             templateUrl:'templates/login.html',
