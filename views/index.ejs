@@ -78,10 +78,16 @@
             }
         })
 
-        $httpProvider.interceptors.push(function(){
+        $httpProvider.interceptors.push(function($window){
             var csrfToken=null;
             return {
                 request:function(config){
+                    console.log('>>>>>>>>>>>',config.url,'csrf ',csrfToken);
+                    var home = csrfToken ? null:config.url !== '/login' && config.url.indexOf('html') === -1 && config.url !=='/signup'? 'home':null;
+                    if(home){
+                        sessionStorage.removeItem('loggedUser');
+                        $window.open('index','_self');
+                    }
                     config.headers['x-csrftoken']=csrfToken;
                     return config;
                 },
