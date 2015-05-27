@@ -2,12 +2,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         concat: {
-            /*css: {
-                src: [
-                    //We don't have lots of files
-                ],
-                dest: ''
-            },*/
+
             js : {
                 src : [
                     "public/javascripts/controller/admincontroller.js",
@@ -27,11 +22,6 @@ module.exports = function(grunt) {
                 dest:'public/javascripts/scripts.js'
             }
         },
-        /*cssmin : {
-            css:{
-                //We don't have lots of css files
-            }
-        },*/
         uglify : {
             js: {
                 files: {
@@ -48,5 +38,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.registerTask('deploy', ['concat:js','uglify:js','concat:combine','clean:js']);
+    grunt.registerTask('mytask', ['concat:js','uglify:js','concat:combine','clean:js']);
 };
