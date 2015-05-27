@@ -18,12 +18,12 @@
                 Contact Management System
             </a>
         </div>
-        <div>
+        <div><ng-clock>
             <button type="button"   class="btn btn-link navbar-btn navbar-right" ng-click="logout()" ng-show="loggedUser">LOGOUT</button>
             <p class="navbar-text navbar-right" ng-show="loggedUser">Welcome {{loggedUser.name}} </p>
             <button type="button" class="btn btn-link navbar-btn navbar-right" ng-click="login()" ng-hide="loggedUser">LOGIN</button>
             <button type="button" class="btn btn-link navbar-btn navbar-right" ng-click="signup()" ng-hide="loggedUser">SIGNUP</button>
-        </div>
+            </ng-clock></div>
     </div>
     <div class="ui-view">
         <img src="images/Global%20MarketingIAV.jpg" height="550px;" width="100%"/>
